@@ -16,15 +16,15 @@ quantity_token=0.0 #Cantidad en primer token
 token_real=0.0 #quantity_token rounded a 6 decimales
 SYMBOL="BTCBUSD"
 SOCKET="wss://stream.binance.com:9443/ws/btcbusd@kline_1m"
-client = Client("xj8fRUF7rI9BSnICoEYbmBr3Kwf3bxwZuIGpj9vOp474tyiad2aufXCCXR0gEQHn","cwxZiytEXXLEdVmPrx7c08ChcZVzVihK9oC3noVhjtHxKurjCnKdlNKubT0YQHme", tld='com')
+client = Client("<key>","<secret_key>", tld='com')
 
 
 def order(side, quantity, symbol,order_type=ORDER_TYPE_MARKET):
     try:
         order = client.create_order(symbol=symbol, side=side, type=order_type, quantity=quantity)
         print(order)
-        correo=yagmail.SMTP("rullet170600@gmail.com","Binjavjai2021")
-        correo.send(to="rullet170600@gmail.com",subject=side,contents=order)
+        correo=yagmail.SMTP("<email>","<password>")
+        correo.send(to="<client_email>",subject=side,contents=order)
     except Exception as e:
         print("an exception occured - {}".format(e))
         return False
